@@ -299,22 +299,68 @@ function renderAll() {
 }
 
 // Modal de detalhes
+// Integração progressiva: Modal busca dados em DOCUMENTOS_DETALHADOS
 function showModal(doc, docData) {
-  document.getElementById('modal-title').textContent = doc.title;
-  // Busca info centralizada
-  const linkInfo = documentLinks[doc.key] || {};
-  let html = `<div style='margin-bottom:0.7em;'>${docData.details || linkInfo.obs || ''}</div>`;
-  html += `<div><b>Onde emitir:</b> ${linkInfo.local || docData.ondeEmitir || '-'}</div>`;
-  if (linkInfo.link) {
-    html += `<div style='margin-top:0.7em;'><a href='${linkInfo.link}' target='_blank' class='official-link-btn'>🌐 Acessar site oficial</a></div>`;
-  } else {
-    html += `<div style='margin-top:0.7em;'><span class='no-link-info'>Emissão presencial ou consulte o órgão responsável.</span></div>`;
+  // Busca documento detalhado pelo id/key
+  let docDetalhado = undefined;
+  if (typeof DOCUMENTOS_DETALHADOS !== 'undefined') {
+    docDetalhado = DOCUMENTOS_DETALHADOS.find(d => d.id === doc.key);
   }
-  if (linkInfo.obs) html += `<div style='margin-top:0.7em;'><b>Observação:</b> ${linkInfo.obs}</div>`;
-  if (doc.obs) html += `<div style='margin-top:0.7em;'><b>Sua observação:</b> ${doc.obs}</div>`;
-  if (doc.prazo) html += `<div><b>Prazo:</b> ${doc.prazo}</div>`;
-  if (doc.urgente) html += `<div style='color:var(--danger);'><b>URGENTE</b></div>`;
+
+  // Fallback seguro: se não encontrar, usa dados antigos
+  const nome = docDetalhado?.nome || doc.title || 'Documento';
+  const descricao = docDetalhado?.descricao || docData.details || '';
+  const observacoes = docDetalhado?.observacoes || [];
+  const exigencias = docDetalhado?.exigencias || [];
+  const condicao = docDetalhado?.condicao || '';
+  const ondeEmitir = docDetalhado?.ondeEmitir || docData.ondeEmitir || '-';
+  const linkOficial = docDetalhado?.linkOficial || '';
+  const prioridade = docDetalhado?.prioridade || docData.priority || '-';
+  const condicaoEspecial = docDetalhado?.condicaoEspecial || false;
+  const copiaRepro = docDetalhado?.copiaRepro || false;
+
+  // Visual premium e organizado
+  let html = `<div class="modal-doc-header">
+    <span class="modal-doc-title">${nome}</span>
+    <span class="modal-doc-priority priority-${prioridade}">${prioridade.charAt(0).toUpperCase() + prioridade.slice(1)}</span>
+    ${condicaoEspecial ? '<span class="modal-doc-alert" title="Condição especial">⚠️</span>' : ''}
+  </div>`;
+  html += `<div class="modal-doc-descricao">${descricao}</div>`;
+  if (exigencias.length > 0) {
+    html += `<div class="modal-doc-exigencias"><b>Exigências:</b><ul>`;
+    exigencias.forEach(ex => {
+      html += `<li>🔹 ${ex}</li>`;
+    });
+    html += `</ul></div>`;
+  }
+  if (observacoes.length > 0) {
+    html += `<div class="modal-doc-observacoes"><b>Observações obrigatórias:</b><ul>`;
+    observacoes.forEach(obs => {
+      html += `<li>⚠️ ${obs}</li>`;
+    });
+    html += `</ul></div>`;
+  }
+  if (condicao) {
+    html += `<div class="modal-doc-condicao"><b>Quando se aplica:</b> ${condicao}</div>`;
+  }
+  if (copiaRepro) {
+    html += `<div class="modal-doc-copia"><b>⚠️ Exige cópia reprográfica</b></div>`;
+  }
+  html += `<div class="modal-doc-onde"><b>Onde emitir:</b> ${ondeEmitir}</div>`;
+  if (linkOficial) {
+    html += `<div class="modal-doc-link"><a href="${linkOficial}" target="_blank" class="official-link-btn">🌐 Acessar site oficial</a></div>`;
+  }
+  // Alertas condicionais
+  if (condicaoEspecial) {
+    html += `<div class="modal-doc-alerta">⚠️ Documento com regra especial. Leia atentamente as exigências.</div>`;
+  }
+  // Observação do usuário
+  if (doc.obs) html += `<div class="modal-doc-userobs"><b>Sua observação:</b> ${doc.obs}</div>`;
+  if (doc.prazo) html += `<div class="modal-doc-prazo"><b>Prazo:</b> ${doc.prazo}</div>`;
+  if (doc.urgente) html += `<div class="modal-doc-urgente" style="color:var(--danger);"><b>URGENTE</b></div>`;
   if (doc.concluidoEm) html += `<div class='concluido-em'><b>Concluído em:</b> ${doc.concluidoEm}</div>`;
+
+  document.getElementById('modal-title').textContent = nome;
   document.getElementById('modal-details').innerHTML = html;
   document.getElementById('modal-bg').style.display = 'flex';
 }
