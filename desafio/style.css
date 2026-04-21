@@ -1,3 +1,102 @@
+.support-section .support-buttons {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0.7em;
+  flex-wrap: wrap;
+}
+.support-section .support-btn {
+  display: inline-block !important;
+  background: #fbbf24;
+  color: #1e293b;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 1.5em;
+  font-size: 1.08em;
+  box-shadow: 0 2px 12px #fbbf2433;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-bottom: 0.2em;
+}
+.support-section .support-btn.secondary {
+  background: #fff;
+  color: #2563eb;
+  border: 1.5px solid #2563eb44;
+  box-shadow: 0 2px 8px #2563eb22;
+}
+/* Apoie o Criador - visual premium */
+.support-section {
+  margin: 3.5em auto 2.5em auto;
+  padding: 1.7em 1em 1.2em 1em;
+  background: linear-gradient(120deg, #1e3a8a 80%, #2563eb 100%);
+  color: #fff;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 1.08em;
+  box-shadow: 0 6px 32px #1e3a8a22;
+  width: 98%;
+  max-width: 420px;
+  display: block;
+  border: 2px solid #2563eb22;
+  position: relative;
+  z-index: 1;
+}
+.support-section h3 {
+  margin-top: 0;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #fff;
+}
+.support-section p {
+  margin-bottom: 1.1em;
+  color: #e0e7ef;
+}
+.support-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0.7em;
+  flex-wrap: wrap;
+}
+.support-btn {
+  background: #fbbf24;
+  color: #1e293b;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 1.5em;
+  font-size: 1.08em;
+  box-shadow: 0 2px 12px #fbbf2433;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-bottom: 0.2em;
+}
+.support-btn:hover {
+  background: #fde68a;
+  color: #1e40af;
+  box-shadow: 0 4px 16px #fbbf2440;
+}
+.support-btn.secondary {
+  background: #fff;
+  color: #2563eb;
+  border: 1.5px solid #2563eb44;
+  box-shadow: 0 2px 8px #2563eb22;
+}
+.support-btn.secondary:hover {
+  background: #e0e7ef;
+  color: #1e3a8a;
+}
+.support-section small {
+  display: block;
+  margin-top: 0.7em;
+  color: #e0e7ef;
+  font-size: 0.98em;
+}
 /* Imagem topo tela inicial */
 .brand-img-top {
   width: 100%;

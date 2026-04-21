@@ -5,53 +5,74 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Missão Oficial</title>
+
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon/icon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icon/icon-192.png">
   <meta name="theme-color" content="#2563eb">
   <meta name="application-name" content="Missão Oficial">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Missão Oficial">
   <meta name="description" content="Checklist digital premium para aprovação documental.">
+
+  <link rel="icon" href="/icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/icon-192.png">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
+
     <header>
       <h1>Checklist de Documentos</h1>
       <p class="subtitle">Checklist premium, visual e motivador</p>
     </header>
+
     <div class="pdf-download">
-      <a href="pdf/checklist.pdf" target="_blank" rel="noopener" download class="download-btn">📄 Baixar PDF detalhado</a>
+      <a href="pdf/checklist.pdf" target="_blank" rel="noopener" download class="download-btn">
+        📄 Baixar PDF detalhado
+      </a>
     </div>
-    <!-- Etapa inicial de perguntas condicionais -->
+
+    <!-- Etapa inicial -->
     <section id="profile-questions-section" class="profile-questions-section">
       <form id="profile-questions-form" class="profile-questions-form-premium">
+
         <div class="branding-premium">
           <img src="/tela-inicial/banner.png" alt="Imagem inicial" class="brand-img-top" />
           <h1 class="brand-title">Missão Oficial</h1>
           <div class="brand-desc">Checklist digital premium para aprovação documental</div>
         </div>
+
         <div class="onboarding-premium">
           <div class="onboarding-step">✔️ Salve seu progresso localmente</div>
           <div class="onboarding-step">✔️ Use no celular ou computador</div>
           <div class="onboarding-step">✔️ Instale como app (PWA)</div>
         </div>
+
         <h2 class="profile-title">Personalize seu checklist</h2>
         <div id="profile-questions-list"></div>
+
         <button type="submit" class="profile-questions-btn-premium">Começar Missão</button>
-        <div class="privacy-msg">🔒 Seus dados ficam salvos <b>apenas no seu navegador</b></div>
+
+        <div class="privacy-msg">
+          🔒 Seus dados ficam salvos <b>apenas no seu navegador</b>
+        </div>
       </form>
     </section>
-    <!-- Checklist e dashboard -->
+
+    <!-- App principal -->
     <div id="main-app" style="display:none;">
-      <!-- Área de nível gamificado -->
+
       <section class="level-section">
         <div id="level-badge" class="level-badge"></div>
       </section>
-      <button id="export-pdf-btn" class="export-pdf-btn">Exportar checklist em PDF</button>
+
+      <button id="export-pdf-btn" class="export-pdf-btn">
+        Exportar checklist em PDF
+      </button>
+
       <section class="dashboard" id="dashboard">
         <div class="dashboard-row">
           <div class="dashboard-card">
@@ -67,6 +88,7 @@
             <span id="dash-done" class="dash-value">0</span>
           </div>
         </div>
+
         <div class="dashboard-row">
           <div class="dashboard-card dash-next">
             <span class="dash-label">Próximos importantes</span>
@@ -74,32 +96,41 @@
           </div>
         </div>
       </section>
-      <!-- Barra de progresso animada -->
+
       <section class="progress-section">
         <div class="progress-bar-bg">
           <div id="progress-bar" class="progress-bar"></div>
         </div>
+
         <span id="progress-percent">0%</span>
         <span id="progress-count">0 de 0 documentos concluídos</span>
-        <button id="reset-btn" title="Resetar checklist">&#8634; Resetar</button>
+
+        <button id="reset-btn">&#8634; Resetar</button>
       </section>
-      <!-- Mensagem motivacional -->
+
       <div id="motivational-message" class="motivational-message"></div>
+
       <main>
         <section>
-          <h2>Pendentes <span class="reminder">&#9888;</span></h2>
+          <h2>Pendentes</h2>
           <ul id="pending-list" class="doc-list"></ul>
         </section>
+
         <section>
-          <h2>Em andamento <span class="progressing">&#9203;</span></h2>
+          <h2>Em andamento</h2>
           <ul id="progressing-list" class="doc-list progressing"></ul>
         </section>
+
         <section>
-          <h2>Concluídos <span class="done">&#10003;</span></h2>
+          <h2>Concluídos</h2>
           <ul id="completed-list" class="doc-list completed"></ul>
         </section>
+
         <section>
-          <button id="show-optional-btn" class="export-pdf-btn" style="margin-top:1.5em;">Ver documentos opcionais</button>
+          <button id="show-optional-btn" class="export-pdf-btn" style="margin-top:1.5em;">
+            Ver documentos opcionais
+          </button>
+
           <div id="optional-modal" class="modal-bg" style="display:none;">
             <div class="modal" style="max-width:420px;">
               <button id="optional-close" class="modal-close">&times;</button>
@@ -109,7 +140,8 @@
           </div>
         </section>
       </main>
-      <!-- Modal de detalhes do documento -->
+
+      <!-- Modal -->
       <div id="modal-bg" class="modal-bg" style="display:none;">
         <div class="modal">
           <button id="modal-close" class="modal-close">&times;</button>
@@ -117,7 +149,8 @@
           <div id="modal-details"></div>
         </div>
       </div>
-      <!-- Tela final especial -->
+
+      <!-- Missão concluída -->
       <div id="mission-complete" class="mission-complete" style="display:none;">
         <div class="mission-content">
           <div class="mission-anim">🎉</div>
@@ -126,39 +159,49 @@
           <div class="mission-seal">🏅</div>
         </div>
       </div>
+
     </div>
-    <!-- Footer fixo -->
-    <footer class="footer-fixed">
-      <div class="footer-main">
-        <span>Todos os direitos reservados a &lt;mugO Santos&gt; 2026</span>
+
+    <!-- 💙 Apoie o criador (AGORA NO LUGAR CERTO) -->
+    <section class="support-section">
+      <h3>💙 Apoie o criador</h3>
+      <p>Se esse app te ajudou, considere apoiar o desenvolvimento 🙌</p>
+
+      <div class="support-buttons">
+        <a href="https://seu-link-pix-ou-pagamento" target="_blank" class="support-btn">
+          💰 Fazer uma contribuição
+        </a>
+        <button onclick="copyPix()" class="support-btn secondary">
+          📋 Copiar chave Pix
+        </button>
       </div>
-      <section class="support-section">
-        <h3>💙 Apoie o criador</h3>
-        <p>Se esse app te ajudou, considere apoiar o desenvolvimento 🙌</p>
-        <div class="support-buttons">
-          <a href="https://seu-link-pix-ou-pagamento" target="_blank" class="support-btn">
-            💰 Fazer uma contribuição
-          </a>
-          <button onclick="copyPix()" class="support-btn secondary">
-            📋 Copiar chave Pix
-          </button>
-        </div>
-        <small>Chave Pix: <b id="pix-key">12981683243</b> &nbsp;|&nbsp; Qualquer valor já ajuda muito 🚀</small>
-      </section>
+
+      <small>
+        Clique para copiar a chave Pix e apoiar! Qualquer valor já ajuda muito 🚀
+      </small>
+    </section>
+
+    <!-- Footer isolado -->
+    <footer class="footer-fixed">
+      <span>Todos os direitos reservados a &lt;mugO Santos&gt; 2026</span>
     </footer>
-    <!-- Botão de resetar app no final da página -->
+
+    <!-- Botão reset -->
     <div class="reset-app-btn-container">
-      <button id="reset-app-btn" class="reset-app-btn" title="Resetar e responder novamente" style="display:none;">
+      <button id="reset-app-btn" class="reset-app-btn" style="display:none;">
         &#8634; Resetar App
       </button>
     </div>
+
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="profileData.js"></script>
   <script src="documentLinks.js"></script>
   <script src="levels.js"></script>
   <script src="exportPDF.js"></script>
   <script src="script.js"></script>
+
   <script>
     function copyPix() {
       const pixKey = "12981683243";
@@ -167,5 +210,6 @@
       });
     }
   </script>
+
 </body>
 </html>
