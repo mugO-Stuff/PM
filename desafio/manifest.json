@@ -2,12 +2,12 @@
   "name": "Missão Oficial",
   "short_name": "Missão",
   "description": "Checklist digital premium para aprovação documental.",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#2563eb",
   "theme_color": "#2563eb",
   "orientation": "portrait",
-  "scope": ".",
+  "scope": "/",
   "icons": [
     {
       "src": "/icon/icon-192.png",
