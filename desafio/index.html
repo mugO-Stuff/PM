@@ -1,17 +1,3 @@
-    <!-- Apoie o Criador -->
-    <section class="support-section">
-      <h3>💙 Apoie o criador</h3>
-      <p>Se esse app te ajudou, considere apoiar o desenvolvimento 🙌</p>
-      <div class="support-buttons">
-        <a href="https://seu-link-pix-ou-pagamento" target="_blank" class="support-btn">
-          💰 Fazer uma contribuição
-        </a>
-        <button onclick="copyPix()" class="support-btn secondary">
-          📋 Copiar chave Pix
-        </button>
-      </div>
-      <small>Qualquer valor já ajuda muito 🚀</small>
-    </section>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -143,7 +129,22 @@
     </div>
     <!-- Footer fixo -->
     <footer class="footer-fixed">
-      Todos os direitos reservados a &lt;mugO Santos&gt; 2026
+      <div class="footer-main">
+        <span>Todos os direitos reservados a &lt;mugO Santos&gt; 2026</span>
+      </div>
+      <section class="support-section">
+        <h3>💙 Apoie o criador</h3>
+        <p>Se esse app te ajudou, considere apoiar o desenvolvimento 🙌</p>
+        <div class="support-buttons">
+          <a href="https://seu-link-pix-ou-pagamento" target="_blank" class="support-btn">
+            💰 Fazer uma contribuição
+          </a>
+          <button onclick="copyPix()" class="support-btn secondary">
+            📋 Copiar chave Pix
+          </button>
+        </div>
+        <small>Chave Pix: <b id="pix-key">12981683243</b> &nbsp;|&nbsp; Qualquer valor já ajuda muito 🚀</small>
+      </section>
     </footer>
     <!-- Botão de resetar app no final da página -->
     <div class="reset-app-btn-container">
@@ -160,7 +161,7 @@
   <script src="script.js"></script>
   <script>
     function copyPix() {
-      const pixKey = "SEU-PIX-AQUI";
+      const pixKey = "12981683243";
       navigator.clipboard.writeText(pixKey).then(() => {
         alert("Chave Pix copiada!");
       });
