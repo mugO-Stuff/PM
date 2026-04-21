@@ -51,6 +51,6 @@ Checklist de documentos nunca foi tão fácil e agradável!
 ## Futuro
 Este sistema pode ser facilmente transformado em um aplicativo Android via PWA ou WebView.
 
----
 
 Capriche no uso e boa organização!
+<!-- Commit técnico para forçar push e atualizar deploy Netlify -->
