@@ -1,3 +1,17 @@
+    <!-- Apoie o Criador -->
+    <section class="support-section">
+      <h3>💙 Apoie o criador</h3>
+      <p>Se esse app te ajudou, considere apoiar o desenvolvimento 🙌</p>
+      <div class="support-buttons">
+        <a href="https://seu-link-pix-ou-pagamento" target="_blank" class="support-btn">
+          💰 Fazer uma contribuição
+        </a>
+        <button onclick="copyPix()" class="support-btn secondary">
+          📋 Copiar chave Pix
+        </button>
+      </div>
+      <small>Qualquer valor já ajuda muito 🚀</small>
+    </section>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -144,5 +158,13 @@
   <script src="levels.js"></script>
   <script src="exportPDF.js"></script>
   <script src="script.js"></script>
+  <script>
+    function copyPix() {
+      const pixKey = "SEU-PIX-AQUI";
+      navigator.clipboard.writeText(pixKey).then(() => {
+        alert("Chave Pix copiada!");
+      });
+    }
+  </script>
 </body>
 </html>
